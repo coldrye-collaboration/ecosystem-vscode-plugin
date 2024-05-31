@@ -72,6 +72,7 @@ export class Gradle implements Build {
                         if (remote && type !== "docker" && type !== "wsl") {
                             if (artifacts[i].endsWith('.war')
                                 || artifacts[i].endsWith('.jar')
+                                || artifacts[i].endsWith('.ear')
                                 || artifacts[i].endsWith('.rar')) {
                                 artifact = filename;
                                 break;
@@ -79,6 +80,7 @@ export class Gradle implements Build {
                         } else {
                             if (artifacts[i].endsWith('.war')
                                 || artifacts[i].endsWith('.jar')
+                                || artifacts[i].endsWith('.ear')
                                 || artifacts[i].endsWith('.rar')
                                 || artifacts[i] === this.getBuildReader().getFinalName()) {
                                 artifact = filename;
@@ -92,7 +94,7 @@ export class Gradle implements Build {
                         let errorMessage = 'Deployment artifact not found in the target.';
                         if (remote) {
                             vscode.window.showErrorMessage(errorMessage
-                                + ' Make sure the deployment file ends with .jar, .rar, or .war to deploy an application to the remote instance.');
+                                + ' Make sure the deployment file ends with .jar, .rar, .ear, or .war to deploy an application to the remote instance.');
                         } else {
                             vscode.window.showErrorMessage(errorMessage);
                         }
